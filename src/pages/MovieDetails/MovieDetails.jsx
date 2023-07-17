@@ -1,7 +1,6 @@
 import { useState, useEffect, Suspense, lazy } from 'react';
 import { useParams, Link, Route, Routes, useLocation } from 'react-router-dom';
 import { BsFillArrowLeftSquareFill } from 'react-icons/bs';
-import { Notify } from 'notiflix';
 import { Loader } from 'components/Loader/Loader';
 import { getMovieDetails } from 'services/API';
 import s from './MovieDetails.module.css';
@@ -12,7 +11,7 @@ const Reviews = lazy(() => import('pages/Reviews/Reviews'));
 function MovieDetails() {
   const [movieInfo, setMovieInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [setError] = useState(null);
+  const [error, setError] = useState(null);
   const { movieId } = useParams();
   const location = useLocation();
 
@@ -38,6 +37,7 @@ function MovieDetails() {
         <BsFillArrowLeftSquareFill size="30px" />
       </Link>
       {isLoading && <Loader />}
+      {error && <p>Oops...Somesing went wrong..</p>}
       {movieInfo !== null && (
         <div className={s.box}>
           <img

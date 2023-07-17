@@ -10,7 +10,7 @@ import s from './Movies.module.css';
 function Movies() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [setError] = useState(null);
+  const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
 
@@ -50,7 +50,8 @@ function Movies() {
         </button>
       </form>
       {isLoading && <Loader />}
-      <MovieList movieList={movies} />
+      {error && <p>Oops...Somesing went wrong..</p>}
+      {movies.length > 0 && <MovieList movieList={movies} />}
     </>
   );
 }

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { Notify } from 'notiflix';
 import { getReviews } from 'services/API';
 import { Loader } from 'components/Loader/Loader';
 import s from './Reviews.module.css';
@@ -29,6 +28,7 @@ function Reviews() {
   return (
     <>
       {isLoading && <Loader />}
+      {error && <p>Oops...Somesing went wrong..</p>}
       <ul className={s.list}>
         {Array.isArray(movieReviews) &&
           movieReviews?.map(el => {
