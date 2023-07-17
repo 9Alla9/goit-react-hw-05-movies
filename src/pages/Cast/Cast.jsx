@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Notify } from 'notiflix';
 import { Loader } from 'components/Loader/Loader';
 import { getCast } from 'services/API';
 import s from './Cast.module.css';
@@ -27,14 +26,10 @@ function Cast() {
     fetchCast(movieId);
   }, [movieId]);
 
-  useEffect(() => {
-    if (error === null) return;
-    Notify.failure(`some error occured ${error}`);
-  }, [error]);
-
   return (
     <>
       {isLoading && <Loader />}
+      {error && <p>Oops...Somesing went wrong..</p>}
       <ul className={s.list}>
         {Array.isArray(movieCast) &&
           movieCast?.map(({ id, name, profile_path }) => {

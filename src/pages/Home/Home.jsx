@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Notify } from 'notiflix';
 import { Loader } from 'components/Loader/Loader';
 import { MovieList } from 'components/MovieList/MovieList';
 import { getTrends } from 'services/API';
