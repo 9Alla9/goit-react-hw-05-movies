@@ -12,7 +12,7 @@ const Reviews = lazy(() => import('pages/Reviews/Reviews'));
 function MovieDetails() {
   const [movieInfo, setMovieInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [setError] = useState(null);
   const { movieId } = useParams();
   const location = useLocation();
 
@@ -31,11 +31,6 @@ function MovieDetails() {
     };
     fetchMovieDetails(movieId);
   }, [movieId]);
-
-  useEffect(() => {
-    if (error === null) return;
-    Notify.failure(`some error occured ${error}`);
-  }, [error]);
 
   return (
     <div className={s.wrapper}>

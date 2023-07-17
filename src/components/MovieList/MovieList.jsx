@@ -26,7 +26,7 @@ export const MovieList = ({ movieList }) => {
 MovieList.propTypes = {
   movieList: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      id: PropTypes.oneOfType([PropTypes.number]),
       name: PropTypes.string,
       title: PropTypes.string,
     }).isRequired

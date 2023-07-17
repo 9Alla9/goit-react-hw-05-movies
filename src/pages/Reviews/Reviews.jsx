@@ -26,12 +26,6 @@ function Reviews() {
     };
     fetchReviews(movieId);
   }, [movieId]);
-
-  useEffect(() => {
-    if (error === null) return;
-    Notify.failure(`some error occured ${error}`);
-  }, [error]);
-
   return (
     <>
       {isLoading && <Loader />}

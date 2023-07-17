@@ -24,17 +24,12 @@ function Home() {
     };
     fetchTrends();
   }, []);
-
-  useEffect(() => {
-    if (error === null) return;
-    Notify.failure(`some error occured ${error}`);
-  }, [error]);
-
   return (
     <>
       <h2 className={s.title}>Trends of the week</h2>
       {isLoading && <Loader />}
-      <MovieList movieList={trends} />
+      {error && <p>Oops...Somesing went wrong..</p>}
+      {trends.length > 0 && <MovieList movieList={trends} />}
     </>
   );
 }

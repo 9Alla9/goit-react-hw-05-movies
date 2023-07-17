@@ -10,7 +10,7 @@ import s from './Movies.module.css';
 function Movies() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
 
@@ -32,15 +32,9 @@ function Movies() {
     };
     fetchTrends(query);
   }, [query]);
-
-  useEffect(() => {
-    if (error === null) return;
-    Notify.failure(`some error occured ${error}`);
-  }, [error]);
-
   const handleSubmit = e => {
     e.preventDefault();
-    if (e.currentTarget.search.value === '') {
+    if (e.currentTarget.search.value.trim() === '') {
       Notify.warning('The input field is empty!');
     }
     setSearchParams({ query: e.currentTarget.search.value });
